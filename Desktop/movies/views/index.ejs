@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+        .grid-container {
+          display: grid;
+          grid-column-gap: 50px;
+          grid-template-columns: auto auto auto;
+          background-color: rgb(128,128,128);
+          padding: 10px;
+        }
+        .card-body{
+            margin : 30px;
+  height: 1300px;
+  background-color:rgb(255,235,205);
+}
+.card{
+    margin : 10px;
+    background-color:hsla(290,60%,70%,0.3);
+    /* background: url(img_tree.gif) left top no-repeat, url(img_flwr.gif) right bottom no-repeat, url(paper.gif) left top repeat; */
+}
+.card-title{
+    color:hsl(0, 100%, 50%);;
+    font-family: 'Courier New';
+    font-size: xx-large;
+}
+        </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bootstrap 4 CardImage</title>         
+        <meta charset="utf-8" />         
+        <meta name="viewport" content="width=device-width, initial-scale=1" />       
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>         
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>      
+    <title>Index page</title>
+  </head>
+  <body>
+    <% if(data !== null){ %>
+        <div class="grid-container">
+            <% let count = 0;data.forEach(function(user, i) { %>
+                    <div class="grid-item">
+                         <div class="card">
+                               <div class="card-body">
+                                   <h5 class="card-title"><b><%=user['title']%></b></h5>
+                                   <img src=<%=user.posterurl %> width="250px" height="300px"><br>
+                                    <br><div><b>Year:</b> <%=user.year%></div>
+                                    <div><b>IMDB Rating:</b><%=user.imdbRating%></div>
+                                   <div><b>Genres: </b>
+                                       <% let vari= user.genres%>
+                                    <%vari.forEach(function(genre, i){ %>
+                                        <%=genre+"," %>
+                                        <% });%>
+                                    </div>
+                                   <div><b>Ratings:</b>
+                                    <% let variy= user.ratings%>
+                                    <%var total = 0;%>
+                                <%for(var j = 0; j < variy.length; j++) {%>
+                                    <%total += variy[j];%>
+                                        <%}%>
+                                    <%var avg = (total / variy.length).toFixed(1);%>
+
+                                        <%=avg;%></div>
+                                     
+                                     <div><b>Content Rating:</b><%=user.contentRating%>
+                                        
+                                     </div>
+                                     <div><b>Duration: </b><%=user.duration%></div>
+                                     <div><b>Release Date:</b> <%=user.releaseDate%></div>
+                                     <div><b>Actors: </b>
+                                        <% let act= user.actors%>
+                                     <%act.forEach(function(actor, i){ %>
+                                         <%=actor+"," %>
+                                         <% });%>
+                                 </div>
+                                 <div><b>Story Line:</b><%=user.storyline%></div>
+                                 </div>
+                             </div>
+                </div>
+          <% }); %>
+        </div>
+          <% } %>
+          
+          <!-- <div class = "book">
+                <h1 class="title">title</h1>
+                <img src="" alt="img" class="images">
+                <p class="short">Description</p>
+            </div> 
+        </div>
+  </body>
+</html>-->
